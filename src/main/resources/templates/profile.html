@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div >
+    <table>
+        <tr>
+            <td> username</td>
+            <td th:text="${data.username}"> </td>
+        </tr>
+
+        <tr>
+            <td> first Name</td>
+            <td th:text="${data.firstName}"> </td>
+        </tr>
+        <tr>
+            <td> last Name</td>
+            <td th:text="${data.lastName}"> </td>
+        </tr><tr>
+            <td> date Of Birth</td>
+            <td td:text="${data.dateOfBirth}"> </td>
+        </tr><tr>
+            <td> Bio</td>
+            <td th:text="${data.bio}"> </td>
+        </tr>
+    </table>
+
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+
+</div>
+
+</body>
+</html>
