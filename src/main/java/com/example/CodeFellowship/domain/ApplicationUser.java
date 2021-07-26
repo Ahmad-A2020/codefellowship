@@ -4,6 +4,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -23,8 +24,8 @@ public class ApplicationUser implements UserDetails {
     private String dateOfBirth;
     private String bio;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
-    private List<Post> posts;
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    private List<Post> posts= new ArrayList<>();
 
     public ApplicationUser() {
 
@@ -39,11 +40,20 @@ public class ApplicationUser implements UserDetails {
         this.bio = bio;
     }
 
+    public List<Post> getPosts() {
+        return posts;
+    }
+
     public Long getId() {
         return id;
     }
 
+    @Override
+    public String getPassword() {
+        return password;
+    }
 
+    @Override
     public String getUsername() {
         return username;
     }
@@ -77,13 +87,8 @@ public class ApplicationUser implements UserDetails {
         return null;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+
 
     public String getFirstName() {
         return firstName;
@@ -115,5 +120,10 @@ public class ApplicationUser implements UserDetails {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    public void setNewPost(Post post){
+        posts.add(post);
+
     }
 }
