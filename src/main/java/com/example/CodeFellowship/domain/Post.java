@@ -10,19 +10,25 @@ public class Post {
     private String body;
     private String createdAt;
 
+    @ManyToOne
+    @JoinColumn(name="Post_Owner")
+    private ApplicationUser owner;
+
     public Post() {
 
     }
 
-    public Post(String body) {
+    public Post(String body,ApplicationUser owner) {
         this.body = body;
+        this.owner=owner;
+
     }
 
     public String getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(String body ) {
         this.body = body;
     }
 

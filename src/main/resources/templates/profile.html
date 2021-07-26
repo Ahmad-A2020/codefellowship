@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -21,16 +21,22 @@
             <td th:text="${data.lastName}"> </td>
         </tr><tr>
             <td> date Of Birth</td>
-            <td td:text="${data.dateOfBirth}"> </td>
+            <td th:text="${data.dateOfBirth}"> </td>
         </tr><tr>
             <td> Bio</td>
             <td th:text="${data.bio}"> </td>
         </tr>
     </table>
 
+
     <form th:action="@{/logout}" method="post">
         <input type="submit" value="Sign Out"/>
     </form>
+    <h1> Posts</h1>
+    <div th:each="post:${data.posts}">
+        <p th:text="${post.body}"> Post text</p>
+
+    </div>
 
 </div>
 

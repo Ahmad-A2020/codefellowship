@@ -52,7 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .loginProcessingUrl("/login").permitAll()
+                .permitAll()
                 .defaultSuccessUrl("/home")
                 .and()
                 .logout().invalidateHttpSession(true)
@@ -62,3 +62,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 ;
     }
 }
+//.loginProcessingUrl("/login")

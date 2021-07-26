@@ -1,5 +1,6 @@
 package com.example.CodeFellowship.web;
 
+import com.example.CodeFellowship.Infrastructure.PostRepository;
 import com.example.CodeFellowship.Infrastructure.UserRepository;
 import com.example.CodeFellowship.domain.ApplicationUser;
 import com.example.CodeFellowship.domain.Post;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,8 @@ import java.util.ArrayList;
 public class HomeController {
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    PostRepository postRepository;
 //    @Autowired
 //    BCryptPasswordEncoder encode;
 
@@ -65,9 +69,23 @@ public class HomeController {
 
     @PostMapping("/post")
     public RedirectView PostHandler(@RequestParam(value = "post") String postText){
-        Post post =new Post(postText);
-
+        UserDetails userDetails= (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        ApplicationUser currentUser= userRepository.findByUsername(userDetails.getUsername());
+        Post post =new Post(postText,currentUser);
+//        currentUser.setNewPost(post);
+        postRepository.save(post);
         return new RedirectView("/home");
+    }
+
+    @GetMapping("/myprofile")
+    public String profileHandler(Model m ){
+        UserDetails userDetails= (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        ApplicationUser currentUser= userRepository.findByUsername(userDetails.getUsername());
+        System.out.println(currentUser.getUsername());
+        m.addAttribute("data",currentUser);
+        return ("profile.html");
+
+
     }
 
 
