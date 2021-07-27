@@ -1,0 +1,35 @@
+body{
+background-color: whitesmoke;
+
+}
+header{
+text-align:center;
+background-color: #66B2FF;
+
+}
+.nav ul li{
+display:inline;
+text-align:center;
+padding:30px;
+
+}
+.nav ul li a{
+color:0F044C;
+text-decoration: none;
+}
+main{
+height: 500px;
+}
+#user{
+  text-align: left;
+  font-weight: bold;
+color:blue
+
+}
+
+body footer{
+text-align:center;
+background-color: #66B2FF;
+height: 30px;
+
+}

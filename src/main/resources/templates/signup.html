@@ -1,32 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="css/signup.css">
 </head>
 <body>
-<form method="post" action="/signup">
-  <label for="username"> User Name</label>
-  <input id="username" name="username" type="text">
 
-  <label for="password"> password </label>
-  <input id="password" name="password" type="password">
+    <header style="text-align:center; background-color: #66B2FF; height:50px; " >
+        <nav class="nav" style="display=flex align-items: center;justify-content: center;">
+            <ul >
 
-  <label for="firstName"> First Name</label>
-  <input id="firstName" name="firstName" type="text">
+                <li style="display:inline; text-align:center; padding:30px;" >
+                    <a href="/home"  style="color:0F044C; text-decoration: none;" > Home</a>
+                </li>
 
-  <label for="lastName"> lastName </label>
-  <input id="lastName" name="lastName" type="text">
+                <div sec:authorize ="isAnonymous()">
 
-  <label for="dateOfBirth"> Date Of Birth</label>
-  <input id="dateOfBirth" name="dateOfBirth" type="text">
 
-  <label for="bio"> Bio </label>
-  <input id="bio" name="bio" type="text">
+                    <li style="display:inline; text-align:center; padding:30px;">
+                        <a href="/login" style="color:0F044C; text-decoration: none;"> Login</a>
+                    </li>
 
-  <input type="submit" value="Submit">
+                    <li style="display:inline; text-align:center; padding:30px;">
+                        <a href="/signup" style="color:0F044C; text-decoration: none;"> SignUp</a>
+                    </li>
 
-</form>
+                </div>
+
+                <div sec:authorize="isAuthenticated()">
+
+                    <li style="display:inline; text-align:center; padding:30px;">
+                        <a href="/logout" style="color:0F044C; text-decoration: none;"> Logout</a>
+                    </li>
+
+                    <li style="display:inline; text-align:center; padding:30px;">
+                        <a href="/addPost" style="color:0F044C; text-decoration: none;"> Post</a>
+                    </li>
+
+                    <li style="display:inline; text-align:center; padding:30px;">
+                        <a href="/myprofile" style="color:0F044C; text-decoration: none;"> Profile</a>
+                    </li>
+
+
+                </div>
+            </ul>
+        </nav>
+
+    </header>
+
+<main>
+
+  <form method="post" action="/signup">
+      <fieldset>
+        <legend> Sign Up</legend>
+
+        <label for="username"> User Name</label>
+        <input id="username" name="username" type="text">
+
+        <label for="password"> password </label>
+        <input id="password" name="password" type="password">
+
+        <label for="firstName"> First Name</label>
+        <input id="firstName" name="firstName" type="text">
+
+        <label for="lastName"> lastName </label>
+        <input id="lastName" name="lastName" type="text">
+
+        <label for="dateOfBirth"> Date Of Birth</label>
+        <input id="dateOfBirth" name="dateOfBirth" type="text">
+
+        <label for="bio"> Bio </label>
+        <input id="bio" name="bio" type="text">
+
+        <input type="submit" value="Submit">
+      </fieldset>
+
+  </form>
+</main>
 
 </body>
 </html>

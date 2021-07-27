@@ -5,13 +5,56 @@
     <title>Title</title>
 </head>
 <body>
+<header style="text-align:center; background-color: #66B2FF; height:50px; " >
+    <nav class="nav" style="display=flex align-items: center;justify-content: center;">
+        <ul >
+
+            <li style="display:inline; text-align:center; padding:30px;" >
+                <a href="/home"  style="color:0F044C; text-decoration: none;" > Home</a>
+            </li>
+
+            <div sec:authorize ="isAnonymous()">
+
+
+                <li style="display:inline; text-align:center; padding:30px;">
+                    <a href="/login" style="color:0F044C; text-decoration: none;"> Login</a>
+                </li>
+
+                <li style="display:inline; text-align:center; padding:30px;">
+                    <a href="/signup" style="color:0F044C; text-decoration: none;"> SignUp</a>
+                </li>
+
+            </div>
+
+            <div sec:authorize="isAuthenticated()">
+
+                <li style="display:inline; text-align:center; padding:30px;">
+                    <a href="/logout" style="color:0F044C; text-decoration: none;"> Logout</a>
+                </li>
+
+                <li style="display:inline; text-align:center; padding:30px;">
+                    <a href="/addPost" style="color:0F044C; text-decoration: none;"> Post</a>
+                </li>
+
+                <li style="display:inline; text-align:center; padding:30px;">
+                    <a href="/myprofile" style="color:0F044C; text-decoration: none;"> Profile</a>
+                </li>
+
+
+            </div>
+        </ul>
+    </nav>
+
+</header>
+<main>
+
 <form action="/post" method="post">
-  <textarea id="post" name="post"> Add your post here</textarea>
-<!--  <label for="createdAt"></label>-->
-<!--  <input id ="createdAt" name="createdAt" type="text">-->
+  <textarea id="post" name="post" rows="4" cols="50"> Add your post here</textarea>
+
   <input type="submit" value="submit">
 
 </form>
+</main>
 
 </body>
 </html>

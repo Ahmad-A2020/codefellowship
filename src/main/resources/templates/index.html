@@ -2,19 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link type="text/css" href="css/index.css" rel="stylesheet" />
+<!--    <link rel="stylesheet" th:href="@{style.css}">-->
+<!--    <link rel="stylesheet" href="static/style.css">-->
     <title>Title</title>
+
 </head>
 <body>
-<heder>
-    <nav>
-        <ul>
-            <li> <a href="/home"> Home</a> </li>
-            <li> <a href="/login"> Login </a> </li>
+<header style="text-align:center; background-color: #66B2FF; height:50px; " >
+    <nav class="nav" style="display=flex align-items: center;justify-content: center;">
+        <ul >
+
+            <li style="display:inline; text-align:center; padding:30px;" >
+                <a href="/home"  style="color:0F044C; text-decoration: none;" > Home</a>
+            </li>
+
+            <div sec:authorize ="isAnonymous()">
+
+
+                <li style="display:inline; text-align:center; padding:30px;">
+                    <a href="/login" style="color:0F044C; text-decoration: none;"> Login</a>
+                </li>
+
+                <li style="display:inline; text-align:center; padding:30px;">
+                    <a href="/signup" style="color:0F044C; text-decoration: none;"> SignUp</a>
+                </li>
+
+            </div>
+
+            <div sec:authorize="isAuthenticated()">
+
+                <li style="display:inline; text-align:center; padding:30px;">
+                    <a href="/logout" style="color:0F044C; text-decoration: none;"> Logout</a>
+                </li>
+
+                <li style="display:inline; text-align:center; padding:30px;">
+                    <a href="/addPost" style="color:0F044C; text-decoration: none;"> Post</a>
+                </li>
+
+                <li style="display:inline; text-align:center; padding:30px;">
+                    <a href="/myprofile" style="color:0F044C; text-decoration: none;"> Profile</a>
+                </li>
+
+
+            </div>
         </ul>
     </nav>
 
-</heder>
-<p> This is CodeFellowship applicatication  that allows people learning to code to connect with each other and support each other on their coding journeys.</p>
+
+
+</header>
+<main>
+
+    <p sec:authorize="isAuthenticated()" id="user"> User Name:    <span sec:authentication="name" >Bob</span>  </p>
+
+    <p> This is CodeFellowship applicatication  that allows people learning to code to connect with each other and support each other on their coding journeys.</p>
+</main>
+<header>
+    <p>  &copy;   </p>
+
+</header>
 
 </body>
 </html>

@@ -1,22 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
-<form action="/login" method="post">
-    <fieldset>
-        <legend> Please Login  </legend>
+<header style="text-align:center; background-color: #66B2FF; height:50px; " >
+    <nav class="nav" style="display=flex align-items: center;justify-content: center;">
+        <ul >
 
-      <label for="username"> User Name:</label>
-      <input id="username" type="text">
-      <label for="password"> Password:</label>
-      <input id="password" type="password">
-      <input type="submit" value="Login">
+            <li style="display:inline; text-align:center; padding:30px;" >
+                <a href="/home"  style="color:0F044C; text-decoration: none;" > Home</a>
+            </li>
 
-    </fieldset>
-</form>
+            <div sec:authorize ="isAnonymous()">
+
+
+                <li style="display:inline; text-align:center; padding:30px;">
+                    <a href="/login" style="color:0F044C; text-decoration: none;"> Login</a>
+                </li>
+
+                <li style="display:inline; text-align:center; padding:30px;">
+                    <a href="/signup" style="color:0F044C; text-decoration: none;"> SignUp</a>
+                </li>
+
+            </div>
+
+            <div sec:authorize="isAuthenticated()">
+
+                <li style="display:inline; text-align:center; padding:30px;">
+                    <a href="/logout" style="color:0F044C; text-decoration: none;"> Logout</a>
+                </li>
+
+                <li style="display:inline; text-align:center; padding:30px;">
+                    <a href="/addPost" style="color:0F044C; text-decoration: none;"> Post</a>
+                </li>
+
+                <li style="display:inline; text-align:center; padding:30px;">
+                    <a href="/myprofile" style="color:0F044C; text-decoration: none;"> Profile</a>
+                </li>
+
+
+            </div>
+        </ul>
+    </nav>
+
+</header>
+
+<main>
+
+    <form action="/login" method="post" class="form">
+        <fieldset>
+            <legend> Please Login  </legend>
+
+          <label for="username"> User Name:</label>
+          <input id="username" type="text">
+          <label for="password"> Password:</label>
+          <input id="password" type="password">
+          <input type="submit" value="Login">
+
+        </fieldset>
+    </form>
+
+</main>
 
 </body>
 </html>
