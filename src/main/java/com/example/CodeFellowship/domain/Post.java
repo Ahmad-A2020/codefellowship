@@ -3,8 +3,8 @@ package com.example.CodeFellowship.domain;
 import javax.persistence.*;
 
 @Entity
-
 @Table(name = "Post")
+
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

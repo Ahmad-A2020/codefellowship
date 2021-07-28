@@ -2,56 +2,47 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="/css/profile.css">
     <title>Title</title>
 </head>
 <body>
 
-    <header  >
-        <nav class="nav" >
-            <ul >
+<header  >
+    <nav class="nav" >
+        <ul >
+            <li> <a href="/home"  > Home</a> </li>
 
-                <li style="display:inline; text-align:center; padding:30px;" >
-                    <a href="/home"  style="color:0F044C; text-decoration: none;" > Home</a>
+            <div sec:authorize ="isAnonymous()">
+                <li >  <a href="/login" > Login</a> </li>
+                <li > <a href="/signup" > SignUp</a> </li>
+
+            </div>
+
+            <div sec:authorize="isAuthenticated()">
+
+                <li >
+                    <a href="/logout" > Logout</a>
                 </li>
 
-                <div sec:authorize ="isAnonymous()">
+                <li >
+                    <a href="/addPost" > Post</a>
+                </li>
+
+                <li >
+                    <a href="/myprofile" > Profile</a>
+                </li>
 
 
-                    <li style="display:inline; text-align:center; padding:30px;">
-                        <a href="/login" style="color:0F044C; text-decoration: none;"> Login</a>
-                    </li>
+            </div>
+            <p sec:authorize="isAuthenticated()" id="user"> User Name:    <span sec:authentication="name" >Bob</span>  </p>
 
-                    <li style="display:inline; text-align:center; padding:30px;">
-                        <a href="/signup" style="color:0F044C; text-decoration: none;"> SignUp</a>
-                    </li>
+        </ul>
+    </nav>
 
-                </div>
-
-                <div sec:authorize="isAuthenticated()">
-
-                    <li style="display:inline; text-align:center; padding:30px;">
-                        <a href="/logout" style="color:0F044C; text-decoration: none;"> Logout</a>
-                    </li>
-
-                    <li style="display:inline; text-align:center; padding:30px;">
-                        <a href="/addPost" style="color:0F044C; text-decoration: none;"> Post</a>
-                    </li>
-
-                    <li style="display:inline; text-align:center; padding:30px;">
-                        <a href="/myprofile" style="color:0F044C; text-decoration: none;"> Profile</a>
-                    </li>
-
-
-                </div>
-            </ul>
-        </nav>
-
-    </header>
+</header>
 
     <main>
-        <p sec:authorize="isAuthenticated()" id="user"> User Name:    <span sec:authentication="name" >Bob</span>  </p>
-
+        <h1>User Details:</h1>
         <div >
             <table id="table">
                 <tr>
@@ -76,17 +67,24 @@
             </table>
 
 
-            <form th:action="@{/logout}" method="post">
-                <input type="submit" value="Sign Out"/>
-            </form>
-            <h1> Posts</h1>
-            <div th:each="post:${data.posts}">
-                <p th:text="${post.body}"> Post text</p>
 
+            <h1> Posts:</h1>
+            <div id="containerPost">
+
+                <div th:each="post:${data.posts}" class="postBox">
+                    <p th:text="${post.body}"> Post text</p>
+
+                </div>
             </div>
 
         </div>
     </main>
+
+<footer>
+    <p>  &copy;2021   </p>
+
+</footer>
+
 
 </body>
 </html>

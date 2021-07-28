@@ -7,12 +7,29 @@ text-align:center;
 background-color: #66B2FF;
 
 }
+.nav ul{
+display:flex;
+margin:auto;
+  flex-direction: row;
+align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+.nav ul div{
+margin:auto;
+margin-left:0px;
+padding-left:0px;
+margin-right:20px;
+
+
+}
 .nav ul li{
 display:inline;
 text-align:center;
 padding:30px;
 
 }
+
 .nav ul li a{
 color:0F044C;
 text-decoration: none;
@@ -27,13 +44,40 @@ color:blue
 
 }
 
-#table tr td{
- border: 1px solid black;
+
+h1{
+  text-align: center;
+font-family: "Times New Roman", Times, serif;
+color: blue;
+font-size:18px;
 }
 
-body footer{
+#table{
+width:25%;
+margin:auto;
+}
+#table tr td{
+ border: 1px solid black;
+ text-align:center;
+}
+footer{
+display:flex;
+flex-direction:column;
+justify-content:center;
 text-align:center;
 background-color: #66B2FF;
 height: 30px;
+}
+#containerPost{
+display:flex;
+flex-direction:row;
+justify-content:center;
+}
+.postBox{
+border: 1px solid black;
+width: 25%;
+background-color: #DEEDF0;
 
 }
+
+

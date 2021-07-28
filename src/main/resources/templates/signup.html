@@ -8,39 +8,29 @@
 </head>
 <body>
 
-    <header style="text-align:center; background-color: #66B2FF; height:50px; " >
-        <nav class="nav" style="display=flex align-items: center;justify-content: center;">
+    <header  >
+        <nav class="nav" >
             <ul >
-
-                <li style="display:inline; text-align:center; padding:30px;" >
-                    <a href="/home"  style="color:0F044C; text-decoration: none;" > Home</a>
-                </li>
+                <li> <a href="/home"  > Home</a> </li>
 
                 <div sec:authorize ="isAnonymous()">
-
-
-                    <li style="display:inline; text-align:center; padding:30px;">
-                        <a href="/login" style="color:0F044C; text-decoration: none;"> Login</a>
-                    </li>
-
-                    <li style="display:inline; text-align:center; padding:30px;">
-                        <a href="/signup" style="color:0F044C; text-decoration: none;"> SignUp</a>
-                    </li>
+                    <li >  <a href="/login" > Login</a> </li>
+                    <li > <a href="/signup" > SignUp</a> </li>
 
                 </div>
 
                 <div sec:authorize="isAuthenticated()">
 
-                    <li style="display:inline; text-align:center; padding:30px;">
-                        <a href="/logout" style="color:0F044C; text-decoration: none;"> Logout</a>
+                    <li >
+                        <a href="/logout" > Logout</a>
                     </li>
 
-                    <li style="display:inline; text-align:center; padding:30px;">
-                        <a href="/addPost" style="color:0F044C; text-decoration: none;"> Post</a>
+                    <li >
+                        <a href="/addPost" > Post</a>
                     </li>
 
-                    <li style="display:inline; text-align:center; padding:30px;">
-                        <a href="/myprofile" style="color:0F044C; text-decoration: none;"> Profile</a>
+                    <li >
+                        <a href="/myprofile" > Profile</a>
                     </li>
 
 
@@ -51,34 +41,46 @@
     </header>
 
 <main>
-
+<h1>Welcome Please fill the sign up form</h1>
   <form method="post" action="/signup">
       <fieldset>
-        <legend> Sign Up</legend>
+        <legend> Sign Up:</legend>
 
-        <label for="username"> User Name</label>
+        <label for="username"> User Name:</label>
         <input id="username" name="username" type="text">
+          <br>
+          <br>
 
-        <label for="password"> password </label>
+        <label for="password"> Password: </label>
         <input id="password" name="password" type="password">
-
-        <label for="firstName"> First Name</label>
+          <br>
+          <br>
+        <label for="firstName"> First Name:</label>
         <input id="firstName" name="firstName" type="text">
-
-        <label for="lastName"> lastName </label>
+          <br>
+          <br>
+        <label for="lastName"> Last Name: </label>
         <input id="lastName" name="lastName" type="text">
-
-        <label for="dateOfBirth"> Date Of Birth</label>
+          <br>
+          <br>
+        <label for="dateOfBirth"> Date Of Birth:</label>
         <input id="dateOfBirth" name="dateOfBirth" type="text">
-
-        <label for="bio"> Bio </label>
+          <br>
+          <br>
+        <label for="bio"> Bio: </label>
         <input id="bio" name="bio" type="text">
-
-        <input type="submit" value="Submit">
+          <br>
+          <br>
+        <input type="submit" value="Sign Up">
       </fieldset>
 
   </form>
 </main>
+
+    <footer>
+        <p>  &copy;2021   </p>
+
+    </footer>
 
 </body>
 </html>

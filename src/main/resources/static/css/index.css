@@ -7,12 +7,29 @@ text-align:center;
 background-color: #66B2FF;
 
 }
+.nav ul{
+display:flex;
+margin:auto;
+  flex-direction: row;
+align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+.nav ul div{
+margin:auto;
+margin-left:0px;
+padding-left:0px;
+margin-right:20px;
+
+
+}
 .nav ul li{
 display:inline;
 text-align:center;
 padding:30px;
 
 }
+
 .nav ul li a{
 color:0F044C;
 text-decoration: none;
@@ -23,13 +40,34 @@ height: 500px;
 #user{
   text-align: left;
   font-weight: bold;
-color:blue
+color:blue;
+margin-right:0px;
 
 }
 
-body footer{
+main{
+background-image:url("home.jpg");
+display:flex;
+flex-direction:column;
+justify-content:center;
+
+}
+
+p{
+  text-align: center;
+font-family: "Times New Roman", Times, serif;
+color: white;
+font-size:18px;
+
+}
+
+
+
+footer{
+display:flex;
+flex-direction:column;
+justify-content:center;
 text-align:center;
 background-color: #66B2FF;
 height: 30px;
-
 }
