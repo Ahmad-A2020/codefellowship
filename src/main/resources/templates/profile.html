@@ -2,43 +2,89 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/profile.css">
     <title>Title</title>
 </head>
 <body>
-<div >
-    <table>
-        <tr>
-            <td> username</td>
-            <td th:text="${data.username}"> </td>
-        </tr>
 
-        <tr>
-            <td> first Name</td>
-            <td th:text="${data.firstName}"> </td>
-        </tr>
-        <tr>
-            <td> last Name</td>
-            <td th:text="${data.lastName}"> </td>
-        </tr><tr>
-            <td> date Of Birth</td>
-            <td th:text="${data.dateOfBirth}"> </td>
-        </tr><tr>
-            <td> Bio</td>
-            <td th:text="${data.bio}"> </td>
-        </tr>
-    </table>
+<header  >
+    <nav class="nav" >
+        <ul >
+            <li> <a href="/home"  > Home</a> </li>
+
+            <div sec:authorize ="isAnonymous()">
+                <li >  <a href="/login" > Login</a> </li>
+                <li > <a href="/signup" > SignUp</a> </li>
+
+            </div>
+
+            <div sec:authorize="isAuthenticated()">
+
+                <li >
+                    <a href="/logout" > Logout</a>
+                </li>
+
+                <li >
+                    <a href="/addPost" > Post</a>
+                </li>
+
+                <li >
+                    <a href="/myprofile" > Profile</a>
+                </li>
 
 
-    <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Sign Out"/>
-    </form>
-    <h1> Posts</h1>
-    <div th:each="post:${data.posts}">
-        <p th:text="${post.body}"> Post text</p>
+            </div>
+            <p sec:authorize="isAuthenticated()" id="user"> User Name:    <span sec:authentication="name" >Bob</span>  </p>
 
-    </div>
+        </ul>
+    </nav>
 
-</div>
+</header>
+
+    <main>
+        <h1>User Details:</h1>
+        <div >
+            <table id="table">
+                <tr>
+                    <td> username</td>
+                    <td th:text="${data.username}"> </td>
+                </tr>
+
+                <tr>
+                    <td> first Name</td>
+                    <td th:text="${data.firstName}"> </td>
+                </tr>
+                <tr>
+                    <td> last Name</td>
+                    <td th:text="${data.lastName}"> </td>
+                </tr><tr>
+                    <td> date Of Birth</td>
+                    <td th:text="${data.dateOfBirth}"> </td>
+                </tr><tr>
+                    <td> Bio</td>
+                    <td th:text="${data.bio}"> </td>
+                </tr>
+            </table>
+
+
+
+            <h1> Posts:</h1>
+            <div id="containerPost">
+
+                <div th:each="post:${data.posts}" class="postBox">
+                    <p th:text="${post.body}"> Post text</p>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+<footer>
+    <p>  &copy;2021   </p>
+
+</footer>
+
 
 </body>
 </html>

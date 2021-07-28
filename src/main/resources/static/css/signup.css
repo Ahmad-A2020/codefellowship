@@ -1,0 +1,85 @@
+body{
+background-color: whitesmoke;
+
+}
+header{
+text-align:center;
+background-color: #66B2FF;
+
+}
+.nav ul{
+display:flex;
+margin:auto;
+  flex-direction: row;
+align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+.nav ul div{
+margin:auto;
+margin-left:0px;
+padding-left:0px;
+margin-right:20px;
+
+
+}
+.nav ul li{
+display:inline;
+text-align:center;
+padding:30px;
+
+}
+
+.nav ul li a{
+color:0F044C;
+text-decoration: none;
+}
+main{
+height: 500px;
+}
+#user{
+  text-align: left;
+  font-weight: bold;
+color:blue
+
+}
+
+
+h1{
+  text-align: center;
+font-family: "Times New Roman", Times, serif;
+color: blue;
+font-size:18px;
+}
+
+form{
+width:30%;
+margin:auto;
+  position: relative;
+
+
+}
+
+form fieldset{
+margin:auto;
+height:280px;
+}
+form input{
+
+  position: absolute;
+  left: 120px;
+}
+form input:last-child{
+width: 100px
+background-color:red;
+color:blue
+
+}
+footer{
+display:flex;
+flex-direction:column;
+justify-content:center;
+text-align:center;
+background-color: #66B2FF;
+height: 30px;
+}

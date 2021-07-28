@@ -1,32 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="css/signup.css">
 </head>
 <body>
-<form method="post" action="/signup">
-  <label for="username"> User Name</label>
-  <input id="username" name="username" type="text">
 
-  <label for="password"> password </label>
-  <input id="password" name="password" type="password">
+    <header  >
+        <nav class="nav" >
+            <ul >
+                <li> <a href="/home"  > Home</a> </li>
 
-  <label for="firstName"> First Name</label>
-  <input id="firstName" name="firstName" type="text">
+                <div sec:authorize ="isAnonymous()">
+                    <li >  <a href="/login" > Login</a> </li>
+                    <li > <a href="/signup" > SignUp</a> </li>
 
-  <label for="lastName"> lastName </label>
-  <input id="lastName" name="lastName" type="text">
+                </div>
 
-  <label for="dateOfBirth"> Date Of Birth</label>
-  <input id="dateOfBirth" name="dateOfBirth" type="text">
+                <div sec:authorize="isAuthenticated()">
 
-  <label for="bio"> Bio </label>
-  <input id="bio" name="bio" type="text">
+                    <li >
+                        <a href="/logout" > Logout</a>
+                    </li>
 
-  <input type="submit" value="Submit">
+                    <li >
+                        <a href="/addPost" > Post</a>
+                    </li>
 
-</form>
+                    <li >
+                        <a href="/myprofile" > Profile</a>
+                    </li>
+
+
+                </div>
+            </ul>
+        </nav>
+
+    </header>
+
+<main>
+<h1>Welcome Please fill the sign up form</h1>
+  <form method="post" action="/signup">
+      <fieldset>
+        <legend> Sign Up:</legend>
+
+        <label for="username"> User Name:</label>
+        <input id="username" name="username" type="text">
+          <br>
+          <br>
+
+        <label for="password"> Password: </label>
+        <input id="password" name="password" type="password">
+          <br>
+          <br>
+        <label for="firstName"> First Name:</label>
+        <input id="firstName" name="firstName" type="text">
+          <br>
+          <br>
+        <label for="lastName"> Last Name: </label>
+        <input id="lastName" name="lastName" type="text">
+          <br>
+          <br>
+        <label for="dateOfBirth"> Date Of Birth:</label>
+        <input id="dateOfBirth" name="dateOfBirth" type="text">
+          <br>
+          <br>
+        <label for="bio"> Bio: </label>
+        <input id="bio" name="bio" type="text">
+          <br>
+          <br>
+        <input type="submit" value="Sign Up">
+      </fieldset>
+
+  </form>
+</main>
+
+    <footer>
+        <p>  &copy;2021   </p>
+
+    </footer>
 
 </body>
 </html>
