@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+    <link type="text/css" href="css/fragment.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/css/suggest.css">
+
+</head>
+<body>
+<header th:replace=" fragment:: header " > </header>
+<main>
+    <span th:if="${users.size() == 0}"><h1>There is no suggested people to follow</h1></span>
+
+    <table id="table" th:if="${users.size() != 0}" >
+        <tr>
+            <th> User Name  </th>
+            <th> Follow  </th>
+        </tr>
+        <tr th:each="user:${users}">
+            <td th:text="${user.firstName}+ ${user.lastName}"> </td>
+            <td ><a th:href="@{'/follow/'+${user.id}}"> Follow</a> </td>
+
+        </tr>
+    </table>
+
+</main>
+<footer th:replace="fragment :: footer" ></footer>
+
+</body>
+</html>

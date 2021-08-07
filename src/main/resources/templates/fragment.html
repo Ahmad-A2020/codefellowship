@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head th:frament="head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link type="text/css" href="css/fragment.css" rel="stylesheet" />
+
+</head>
+<body>
+<header  th:frament="header">
+  <nav class="nav" >
+    <ul >
+      <li> <a href="/home"  > Home</a> </li>
+
+      <div sec:authorize ="isAnonymous()">
+        <li >  <a href="/login" > Login</a> </li>
+        <li > <a href="/signup" > SignUp</a> </li>
+
+      </div>
+
+      <div sec:authorize="isAuthenticated()">
+
+        <li >
+          <a href="/logout" > Logout</a>
+        </li>
+
+        <li >
+          <a href="/addPost" > Post</a>
+        </li>
+
+        <li >
+          <a href="/myprofile" > Profile</a>
+        </li>
+
+
+        <li >
+          <a href="/suggest" > Suggestion</a>
+        </li>
+
+        <li >
+          <a href="/followList" > Feed</a>
+        </li>
+
+
+      </div>
+      <p sec:authorize="isAuthenticated()" id="user"> User Name:    <span sec:authentication="name" >Bob</span>  </p>
+    </ul>
+  </nav>
+
+</header>
+
+<footer th:frament="footer">
+  <p>  &copy;2021   </p>
+
+</footer>
+
+
+</body>
+</html>

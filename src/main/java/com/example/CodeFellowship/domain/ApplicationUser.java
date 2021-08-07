@@ -32,6 +32,34 @@ public class ApplicationUser implements UserDetails {
 
     }
 
+    @ManyToMany
+    @JoinTable(
+            name="user_user",
+            joinColumns = {@JoinColumn(name="from_id")},
+            inverseJoinColumns = {@JoinColumn(name="to_id")}
+    )
+    public List<ApplicationUser> following;
+
+    @ManyToMany(mappedBy="following", fetch = FetchType.EAGER)
+    public List<ApplicationUser> follower;
+
+
+    public List<ApplicationUser> getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(ApplicationUser addfollowing) {
+        this.following.add(addfollowing);
+    }
+
+    public List<ApplicationUser> getFollower() {
+        return follower;
+    }
+
+    public void setFollower(List<ApplicationUser> follower) {
+        this.follower = follower;
+    }
+
     public ApplicationUser(String username, String password, String firstName, String lastName, String dateOfBirth, String bio) {
         this.username = username;
         this.password = password;

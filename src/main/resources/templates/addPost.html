@@ -3,58 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link type="text/css" href="css/fragment.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="/css/post.css">
 </head>
 <body>
-<header  >
-    <nav class="nav" >
-        <ul >
-            <li> <a href="/home"  > Home</a> </li>
+    <header th:replace=" fragment:: header " > </header>
 
-            <div sec:authorize ="isAnonymous()">
-                <li >  <a href="/login" > Login</a> </li>
-                <li > <a href="/signup" > SignUp</a> </li>
+    <main>
+        <h1>Write your post at the below field</h1>
 
-            </div>
+    <form action="/post" method="post">
+      <textarea id="post" name="post" rows="10" cols="50"> Add your post here</textarea>
+        <br>
+        <br>
 
-            <div sec:authorize="isAuthenticated()">
+      <input type="submit" value="Post">
 
-                <li >
-                    <a href="/logout" > Logout</a>
-                </li>
+    </form>
+    </main>
+    <footer th:replace="fragment :: footer" ></footer>
 
-                <li >
-                    <a href="/addPost" > Post</a>
-                </li>
-
-                <li >
-                    <a href="/myprofile" > Profile</a>
-                </li>
-
-
-            </div>
-            <p sec:authorize="isAuthenticated()" id="user"> User Name:    <span sec:authentication="name" >Bob</span>  </p>
-
-        </ul>
-    </nav>
-
-</header>
-<main>
-    <h1>Write your post at the below field</h1>
-
-<form action="/post" method="post">
-  <textarea id="post" name="post" rows="10" cols="50"> Add your post here</textarea>
-    <br>
-    <br>
-
-  <input type="submit" value="Post">
-
-</form>
-</main>
-<footer>
-    <p>  &copy;2021   </p>
-
-</footer>
 
 </body>
 </html>
