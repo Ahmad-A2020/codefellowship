@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 import com.example.CodeFellowship.domain.ApplicationUser;
 
+import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -33,6 +35,7 @@ public class HomeController {
 
     @GetMapping ("/home")
     public String home(){
+
         return ("index.html");
     }
 
@@ -87,6 +90,49 @@ public class HomeController {
 
 
     }
+    @GetMapping ("/suggest")
+    public String home(Model m, Principal p){
+        List<ApplicationUser> allUsers= userRepository.findAll();
+        ApplicationUser currentUser= userRepository.findByUsername(p.getName());
+        List<ApplicationUser> followingList= currentUser.getFollowing();
+        List<ApplicationUser> notFollowedUser= new ArrayList<>();
+        allUsers.forEach((element)->{
+            if ((! followingList.contains(element)) && element.getUsername() != currentUser.getUsername() ){
+                notFollowedUser.add(element);
+            }
+        });
+        m.addAttribute("users",notFollowedUser);
+        return ("suggest.html");
+    }
+
+    @GetMapping("/follow/{id}")
+    public RedirectView addFollower(@PathVariable("id") Long id, Principal p){
+        ApplicationUser usertoFollow = userRepository.findById(id).get();
+        ApplicationUser currentUser = userRepository.findByUsername(p.getName());
+        currentUser.setFollowing(usertoFollow);
+        userRepository.save(currentUser);
+        return new RedirectView("/suggest");
+
+    }
+    @GetMapping("/followList")
+    public String followerContent( Principal p, Model m){
+        ApplicationUser currentUser = userRepository.findByUsername(p.getName());
+        List<ApplicationUser> followList= currentUser.getFollowing();
+
+        m.addAttribute("followings",followList);
+        return "feed.html";
+
+    }
+
+    @GetMapping("/profile/{id}")
+    public String profileOfFollowing(@PathVariable("id") Long id, Model m){
+        ApplicationUser following = userRepository.findById(id).get();
+        m.addAttribute("data",following);
+        return ("profile.html");
+
+    }
+
+
 
 
 

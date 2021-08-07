@@ -10,48 +10,17 @@
 </head>
 <body>
 
-<header  >
-    <nav class="nav" >
-        <ul >
-            <li> <a href="/home"  > Home</a> </li>
-
-            <div sec:authorize ="isAnonymous()">
-                <li >  <a href="/login" > Login</a> </li>
-                <li > <a href="/signup" > SignUp</a> </li>
-
-            </div>
-
-            <div sec:authorize="isAuthenticated()">
-
-                <li >
-                    <a href="/logout" > Logout</a>
-                </li>
-
-                <li >
-                    <a href="/addPost" > Post</a>
-                </li>
-
-                <li >
-                    <a href="/myprofile" > Profile</a>
-                </li>
+    <header th:replace=" fragment:: header " > </header>
 
 
-            </div>
-    <p sec:authorize="isAuthenticated()" id="user"> User Name:    <span sec:authentication="name" >Bob</span>  </p>
-        </ul>
-    </nav>
-
-</header>
-<main>
+    <main>
 
 
-    <p> This is CodeFellowship applicatication  that allows people learning to code to connect with each other and support each other on their coding journeys.</p>
-</main>
+        <p> This is CodeFellowship applicatication  that allows people learning to code to connect with each other and support each other on their coding journeys.</p>
+    </main>
 
-<footer>
-    <p>  &copy;2021   </p>
+    <footer th:replace="fragment :: footer" ></footer>
 
-</footer>
 
 </body>
 </html>

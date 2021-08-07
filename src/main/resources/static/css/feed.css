@@ -1,0 +1,45 @@
+#box{
+display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 5%;
+    flex-wrap: wrap;
+}
+.container{
+    background-color: lightsteelblue;
+    width: 30%;
+    margin: auto;
+    border: 3px solid;
+    box-shadow: 5px 5px;
+    margin-top: 0px
+
+}
+.container a{
+    position: relative;
+    left: 277px;
+    bottom: 34px;
+    padding-left:25px;
+
+}
+
+.container p{
+text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+}
+.posts{
+    margin-left: 50px;
+    width: 75%;
+    border-left: 5px solid darkblue;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: steelblue;
+}
+.posts p{
+text-align: center;
+    width: 80%;
+    margin: auto;
+    font-weight:2px;
+    font-family: "Times New Roman", Times, serif;
+
+}

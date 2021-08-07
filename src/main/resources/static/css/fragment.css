@@ -35,33 +35,17 @@ color:0F044C;
 text-decoration: none;
 }
 main{
-height: 580px;
+height: 500px;
 }
 
-#user{
-  text-align: left;
-  font-weight: bold;
-color:blue;
-margin-right:0px;
 
-}
 
-main{
-background-image:url("home.jpg");
-display:flex;
-flex-direction:column;
-justify-content:center;
-
-}
-
-p{
+h1{
   text-align: center;
 font-family: "Times New Roman", Times, serif;
-color: white;
+color: blue;
 font-size:18px;
-
 }
-
 
 
 footer{
@@ -72,3 +56,6 @@ text-align:center;
 background-color: #66B2FF;
 height: 30px;
 }
+
+
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+    <link type="text/css" href="css/fragment.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/css/feed.css">
+
+</head>
+<body>
+<header th:replace=" fragment:: header " > </header>
+<main>
+    <div id="box">
+
+    <div th:each="following:${followings}" class="container" >
+        <p th:text="${following.firstName}+'  '+${following.lastName} "></p>
+        <a th:href="@{'/profile/'+${following.id}}"> Profile</a>
+        <p style="text-align: center; "> Posts</p>
+        <div th:each="post:${following.posts}" class="posts" >
+            <p th:text="${post.body}"></p>
+
+        </div>
+
+    </div>
+    </div>
+
+    <!--    <table>-->
+<!--        <tr>-->
+<!--            <th> Name</th>-->
+<!--            <th> Show </th>-->
+<!--        </tr>-->
+<!--        <tr th:each="following:${followings}">-->
+<!--            <td th:text="${following.firstName}+'  '+${following.lastName} "></td>-->
+
+<!--        </tr>-->
+<!--    </table>-->
+
+</main>
+<footer th:replace="fragment :: footer" ></footer>
+
+
+</body>
+</html>
